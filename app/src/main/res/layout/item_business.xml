@@ -31,8 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="@id/rating"
         app:layout_constraintStart_toEndOf="@+id/rating"
-        tools:layout_editor_absoluteY="21dp"
         tools:text="321 Reviews" />
 
     <RatingBar
@@ -40,11 +40,13 @@
         style="@style/Widget.AppCompat.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:numStars="5"
         android:rating="4.5"
         android:stepSize="0.5"
         app:layout_constraintBottom_toBottomOf="@+id/reviews"
-        app:layout_constraintStart_toStartOf="@+id/name" />
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
         android:id="@+id/address"
