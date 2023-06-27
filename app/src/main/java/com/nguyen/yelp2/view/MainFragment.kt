@@ -10,12 +10,15 @@ import com.nguyen.yelp2.model.BusinessesAdapter
 import com.nguyen.yelp2.R
 import com.nguyen.yelp2.viewmodel.YelpViewModel
 import com.nguyen.yelp2.databinding.FragmentMainBinding
+import com.nguyen.yelp2.model.ServiceLocator
+import com.nguyen.yelp2.viewmodel.YelpViewModelFactory
 
 private const val TAG = "MainActivity"
-private const val API_KEY = "7WnY3zVPZ8Yj9S8JWphAu5dn8myhk0N0eAZ4P5vluMBcEg7t1gc41fdBHgluTHLNziDGBiH0UvciG4-p-IJQfPvR5Pdhd9WJ1G4pQnwZr6_cZG54KU6rZVrjITSfX3Yx"
 
 class MainFragment : Fragment(R.layout.fragment_main) {
-    private val viewModel by viewModels<YelpViewModel>()
+    private val viewModel by viewModels<YelpViewModel> {
+        YelpViewModelFactory(ServiceLocator.provideRepository())
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
