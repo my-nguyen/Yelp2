@@ -1,4 +1,4 @@
-package com.nguyen.yelp2
+package com.nguyen.yelp2.model
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +8,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.nguyen.yelp2.databinding.ItemBusinessBinding
+import com.nguyen.yelp2.model.json.Business
 
 class BusinessesAdapter(private val businesses: List<Business>): RecyclerView.Adapter<BusinessesAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemBusinessBinding): RecyclerView.ViewHolder(binding.root) {

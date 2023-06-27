@@ -1,10 +1,14 @@
-package com.nguyen.yelp2
+package com.nguyen.yelp2.view
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.nguyen.yelp2.model.json.Business
+import com.nguyen.yelp2.model.BusinessesAdapter
+import com.nguyen.yelp2.R
+import com.nguyen.yelp2.viewmodel.YelpViewModel
 import com.nguyen.yelp2.databinding.FragmentMainBinding
 
 private const val TAG = "MainActivity"

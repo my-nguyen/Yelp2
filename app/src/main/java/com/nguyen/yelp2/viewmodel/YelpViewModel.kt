@@ -1,10 +1,11 @@
-package com.nguyen.yelp2
+package com.nguyen.yelp2.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.nguyen.yelp2.model.json.Data
+import com.nguyen.yelp2.model.YelpApi
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -14,9 +15,9 @@ class YelpViewModel: ViewModel() {
     val data = MutableLiveData<Data>()
 
     fun searchBusinesses(term: String, location: String) {
-        CoroutineScope(IO).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             val result = YelpApi.service.searchBusinesses("Bearer $API_KEY", term, location)
-            withContext(Main) {
+            withContext(Dispatchers.Main) {
                 data.postValue(result)
             }
         }

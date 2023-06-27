@@ -1,5 +1,6 @@
-package com.nguyen.yelp2
+package com.nguyen.yelp2.model
 
+import com.nguyen.yelp2.model.json.Data
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query

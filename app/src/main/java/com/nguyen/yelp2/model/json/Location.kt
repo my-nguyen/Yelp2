@@ -1,4 +1,4 @@
-package com.nguyen.yelp2
+package com.nguyen.yelp2.model.json
 
 data class Location(
     val address1: String,
