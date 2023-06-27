@@ -7,5 +7,5 @@ import retrofit2.http.Query
 
 interface YelpService {
     @GET("businesses/search")
-    fun searchBusinesses(@Header("Authorization") authorization: String, @Query("term") term: String, @Query("location") location: String): Call<Any>
+    fun searchBusinesses(@Header("Authorization") authorization: String, @Query("term") term: String, @Query("location") location: String): Call<Data>
 }
