@@ -1,14 +1,15 @@
 package com.nguyen.yelp2
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nguyen.yelp2.databinding.FragmentMainBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 private const val BASE_URL = "https://api.yelp.com/v3/"
 private const val TAG = "MainActivity"
@@ -26,22 +27,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             layoutManager = LinearLayoutManager(requireContext())
         }
 
-        YelpApi.service.searchBusinesses("Bearer $API_KEY", "Avocado Toast", "New York").enqueue(object:
-            Callback<Data> {
-            override fun onResponse(call: Call<Data>, response: Response<Data>) {
-                Log.i(TAG, "onResponse $response")
-                val body = response.body()
-                if (body == null) {
-                    Log.w(TAG, "Did not receive valid response body from Yelp API... exiting")
-                    return
-                }
-                businesses.addAll(body.businesses)
+        CoroutineScope(IO).launch {
+            val data = YelpApi.service.searchBusinesses("Bearer $API_KEY", "Avocado Toast", "New York")
+            businesses.addAll(data.businesses)
+            withContext(Main) {
                 adaptor.notifyDataSetChanged()
             }
-
-            override fun onFailure(call: Call<Data>, t: Throwable) {
-                Log.i(TAG, "onFailure $t")
-            }
-        })
+        }
     }
 }
