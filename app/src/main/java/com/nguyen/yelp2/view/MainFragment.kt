@@ -36,6 +36,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             adaptor.notifyDataSetChanged()
         }
 
-        viewModel.searchBusinesses("Avocado Toast", "New York")
+        viewModel.searchBusinesses("In-n-Out", "San Jose")
     }
 }
