@@ -9,8 +9,6 @@ import com.nguyen.yelp2.databinding.FragmentMainBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 private const val BASE_URL = "https://api.yelp.com/v3/"
 private const val TAG = "MainActivity"
@@ -28,10 +26,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             layoutManager = LinearLayoutManager(requireContext())
         }
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
-        val service = retrofit.create(YelpService::class.java)
-        service.searchBusinesses("Bearer $API_KEY", "Avocado Toast", "New York").enqueue(object:
+        YelpApi.service.searchBusinesses("Bearer $API_KEY", "Avocado Toast", "New York").enqueue(object:
             Callback<Data> {
             override fun onResponse(call: Call<Data>, response: Response<Data>) {
                 Log.i(TAG, "onResponse $response")
