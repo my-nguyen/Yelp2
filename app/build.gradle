@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.nguyen.yelp2'
-    compileSdk 33
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.nguyen.yelp2"
